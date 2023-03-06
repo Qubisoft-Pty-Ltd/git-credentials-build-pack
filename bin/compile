@@ -20,6 +20,10 @@ git config --global user.name "$GITHUB_USERNAME"
 git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
 git config --global github.token "$GITHUB_TOKEN"
 
+echo "git config --global user.name \"$GITHUB_USERNAME\""
+echo "git config --global user.email \"$GITHUB_USERNAME@users.noreply.github.com\""
+echo "git config --global github.token \"$GITHUB_TOKEN\""
+
 # Set Git credentials
 git config --global credential.helper "store --file=$HOME/.git-credentials"
 
