@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "Config github credentials"
+exit 0

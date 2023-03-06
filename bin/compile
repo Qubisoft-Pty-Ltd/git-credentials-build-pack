@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+function indent() {
+	c='s/^/       /'
+	case $(uname) in
+		Darwin) sed -l "$c";;
+		*)      sed -u "$c";;
+	esac
+}
+
+echo "-----> Ensure you have your github environment variables correctly set in heroku"
+
+# Set GitHub credentials
+ENV_DIR=${3:-}
+GITHUB_USERNAME="$(cat $ENV_DIR/GITHUB_USERNAME)"
+GITHUB_TOKEN="$(cat $ENV_DIR/GITHUB_TOKEN)"
+
+# Set Git configuration
+git config --global user.name "$GITHUB_USERNAME"
+git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
+git config --global github.token "$GITHUB_TOKEN"
+
+# Set Git credentials
+git config --global credential.helper "store --file=$HOME/.git-credentials"
+
+echo "-----> Configured git credentials"
+
